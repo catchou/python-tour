@@ -31,28 +31,25 @@ def get_contents():
         resp = requests.get(url, headers=headers)
         str = resp.text
         root_contents = re.findall(root_pattern, str)
-        #print("-------------------------------第%s页:-------------------------" % (i + 1))
+        print("-------------------------------第%s页:-------------------------" % (i + 1))
         for content in root_contents:
             author = re.findall(author_pattern, content)
             if(author == []):
                 author = ['佚名']
             text = re.findall(text_pattern, content)
-            #print("作者：%s" % author)
-
+            print("作者：%s" % author)
+            print("内容：%s" % text)
 
 get_contents()
-
-
 
 # 提取各页面的数据
 # @str root_contents 该页面的所有内容
 # @dict 提取的规则。例：{"a_pattern":"pattern_contents"}
 def analysis_contents(root_contents, *patterns):
-    for pattern in patterns:
-        print(pattern.items())
-        #pass
-    #print(type(patterns))
+    patternDict = patterns[0]
+    for (k, v) in patternDict.items():
+        pass
 
 
 #get_contents()
-analysis_contents(base_str, qiubai_patterns)
+#analysis_contents(base_str, qiubai_patterns)
